@@ -1,0 +1,68 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This is a basic workflow to help you get started with Using Checkmarx CxFlow Action
+
+name: CxFlow
+
+on:
+  push:
+    branches: [ "main" , "master"]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '18 17 * * 3'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel - this job is specifically configured to use the Checkmarx CxFlow Action
+permissions:
+  contents: read
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on - Ubuntu is required as Docker is leveraged for the action
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      issues: write # for checkmarx-ts/checkmarx-cxflow-github-action to write feedback to github issues
+      pull-requests: write # for checkmarx-ts/checkmarx-cxflow-github-action to write feedback to PR
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+    runs-on: ubuntu-latest
+
+    # Steps require - checkout code, run CxFlow Action, Upload SARIF report (optional)
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+    # Runs the Checkmarx Scan leveraging the latest version of CxFlow - REFER to Action README for list of inputs
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@49d8269b14ca87910ba003d47a31fa0c7a11f2fe
+      with:
+        project: TestCheckmarx1
+        app: TestCheckmarx1
+        team: '/CxServer'
+        preset: High
+        break_build: false
+        incremental: false
+        checkmarx_url: https://b8fd-31-168-164-190.ngrok.io    
+        checkmarx_username: admin@cx
+        checkmarx_password: Cx123456!
+        checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
+        scanners: sast
+        bug_tracker: Sarif
+      #  jira_url: https://nidhikjaiswal.atlassian.net/
+      #  jira_username: jaiswal.nidhi0512@gmail.com
+      #  jira_token: HDgIS6SlvoQSmABX70UQ4C3D
+      #  jira_issue_type: 'Bug'
+      #  jira_open_transition: 'In Progress'
+      #  jira_close_transition: 'Done'
+      #  jira_open_status: 'In Progress, In Review'
+      #  jira_closed_status: 'Done'
+        github_token: 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
+        params: --logging.level.com.checkmarx.flow.custom=debug --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-name=webGoat --cx-flow.bug-tracker-impl=Sarif
+   #Upload the Report for CodeQL/Security Alerts
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: cx.sarif
