@@ -7,4 +7,4 @@ routing:
     ismigrate: true
   my_fallthrough_definition:
     match: .*
-    ismigrate: false
+    ismigrate: true
