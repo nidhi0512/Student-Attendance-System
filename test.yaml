@@ -1,0 +1,10 @@
+routing:
+  my_defintion_for_appsec_test_projects:
+    regex: /CxServer/AppSec/.*
+    ismigrate: true
+  my_meaningful_definition_name:
+    match: .*prod$
+    ismigrate: true
+  my_fallthrough_definition:
+    match: .*
+    ismigrate: false
