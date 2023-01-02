@@ -125,6 +125,7 @@ public class AttendanceDao {
 			rs = null;
 			ps = null;
 			conn = null;
+			
 			return al;
 		}
 	}
