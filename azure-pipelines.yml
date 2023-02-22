@@ -3,17 +3,25 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    name: Default
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: Application security testing@2022
+    displayName: Application security testing
+    inputs:
+      projectName: ProxyTest
+      enableProxy: false
+      proxyUrl: http://10.32.6.160:8044
+      CheckmarxService: 9d023f45-2200-4c16-8db1-0b288106465f
+      fullTeamName: CxServer
+      fullScansScheduled: false
+      enableDependencyScan: true
+      dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
+      scaProxyUrl: http://10.32.6.160:8044
+      scaTeam: CxServer
