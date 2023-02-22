@@ -17,11 +17,11 @@ jobs:
     inputs:
       projectName: ProxyTest
       enableProxy: true
-      proxyUrl: http://10.32.6.160:8044
       CheckmarxService: 9d023f45-2200-4c16-8db1-0b288106465f
       fullTeamName: CxServer
       fullScansScheduled: false
       incScan: false
+      scaProxyUrl: http://10.32.6.160:8044
       enableDependencyScan: true
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
       scaTeam: CxServer
