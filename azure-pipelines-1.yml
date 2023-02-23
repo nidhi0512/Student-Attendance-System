@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    name: Default
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: Application security testing@2022
+    displayName: Application security testing
+    inputs:
+      projectName: ProxyTest
+      enableProxy: true
+      proxyUrl: http://10.32.6.160:8044
+      CheckmarxService: 9d023f45-2200-4c16-8db1-0b288106465f
+      fullTeamName: CxServer
+      incScan: false
+      fullScansScheduled: false
+      enableDependencyScan: true
+      dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
+      scaProxyUrl: http://10.32.6.160:8044
+      scaTeam: CxServer
+...
