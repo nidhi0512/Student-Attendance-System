@@ -3,6 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
 jobs:
 - job: Job_1
   displayName: Agent job 1
@@ -18,11 +19,11 @@ jobs:
   - task: Application security testing@2022
     displayName: Application security testing
     inputs:
-      projectName: ProxyTest6
+      projectName: ProxyTest
       enableProxy: true
       proxyUrl: http://10.32.6.160:8044
       CheckmarxService: 586d9bf2-0ecc-48ba-82b6-2e06d50c47f1
-   #   sastProxyUrl: http://10.32.6.160:8044
+     # sastProxyUrl: http://10.32.6.160:8044
       fullTeamName: CxServer
       incScan: false
       fullScansScheduled: false
@@ -30,5 +31,4 @@ jobs:
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
       scaProxyUrl: http://10.32.6.160:8044
       scaTeam: CxServer
-
-
+...
