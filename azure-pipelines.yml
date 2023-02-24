@@ -20,7 +20,7 @@ jobs:
     displayName: Application security testing
     inputs:
       projectName: ProxyTest
-      enableProxy: false
+      enableProxy: true
     #  proxyUrl: http://10.32.6.160:8044
       CheckmarxService: 586d9bf2-0ecc-48ba-82b6-2e06d50c47f1
       sastProxyUrl: http://10.32.6.160:8044
