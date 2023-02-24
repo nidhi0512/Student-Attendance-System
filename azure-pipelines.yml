@@ -23,12 +23,12 @@ jobs:
       enableProxy: true
       proxyUrl: http://10.32.6.160:8044
       CheckmarxService: 586d9bf2-0ecc-48ba-82b6-2e06d50c47f1
-     # sastProxyUrl: http://10.32.6.160:8044
+      sastProxyUrl: http://10.32.6.160:8044
       fullTeamName: CxServer
       incScan: false
       fullScansScheduled: false
       enableDependencyScan: true
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
-      scaProxyUrl: http://10.32.6.160:8044
+     # scaProxyUrl: http://10.32.6.160:8044
       scaTeam: CxServer
 ...
