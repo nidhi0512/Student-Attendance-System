@@ -7,28 +7,21 @@
 jobs:
 - job: Job_1
   displayName: Agent job 1
-  variables:
-    - name: System.Debug
-      value: true
   pool:
     name: Default
   steps:
   - checkout: self
     clean: true
     fetchTags: false
-  - task: Application security testing@2022
+  - task: Application security testing@2023
     displayName: Application security testing
     inputs:
-      projectName: ProxyTest
-      enableProxy: true
-    #  proxyUrl: http://10.32.6.160:8044
-      CheckmarxService: 586d9bf2-0ecc-48ba-82b6-2e06d50c47f1
-      sastProxyUrl: http://10.32.6.160:8044
-      fullTeamName: CxServer
-      incScan: false
+      projectName: ProjScanCustomTags
+      enableSastScan: false
       fullScansScheduled: false
       enableDependencyScan: true
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
-      scaProxyUrl: http://10.32.3.3:8020
       scaTeam: CxServer
-...
+      projectCustomTags: a, b, abc:xde, x, z, vc&*g:bn*&j
+      scanCustomTags: 'c, d, bnj:mnj, a, n, b, LKO_+&*:NJHK*& '
+      
