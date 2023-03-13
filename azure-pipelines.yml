@@ -13,15 +13,14 @@ jobs:
   - checkout: self
     clean: true
     fetchTags: false
-  - task: Application security testing@2023
+  - task: Application security testing@2022
     displayName: Application security testing
     inputs:
-      projectName: ProjScanCustomTags
+      projectName: TestProj
       enableSastScan: false
       fullScansScheduled: false
       enableDependencyScan: true
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
-      scaTeam: CxServer
-      projectCustomTags: a, b, abc:xde, x, z, vc&*g:bn*&j
-      scanCustomTags: 'c, d, bnj:mnj, a, n, b, LKO_+&*:NJHK*& '
-      
+      manifestPattern: '!**/*.java'
+      fingerprintPattern: '!**/*.java'
+...
