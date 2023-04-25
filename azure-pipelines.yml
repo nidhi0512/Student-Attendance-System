@@ -9,6 +9,8 @@ jobs:
   displayName: Agent job 1
   pool:
     name: Default
+  variables:
+    System.Debug: true
   steps:
   - checkout: self
     clean: true
