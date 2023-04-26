@@ -18,15 +18,13 @@ jobs:
   - task: Application security testing@2023
     displayName: Application security testing
     inputs:
-      projectName: CxTest
-      enableSastScan: false
+      projectName: cxtest
+      enableProxy: true
       CheckmarxService: 61c5f2c3-f703-4a9f-90c5-84da95eccf9c
       fullTeamName: CxServer
       incScan: false
       fullScansScheduled: false
       enableDependencyScan: true
       dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
-      manifestPattern: test
-      fingerprintPattern: test
       scaTeam: CxServer
 ...
