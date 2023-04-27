@@ -9,10 +9,7 @@ parameters:
  
 
 variables:
-
-- name: debug
-
-  value: true 
+  System.Debug: true
 
 pool:
 
