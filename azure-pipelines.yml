@@ -24,8 +24,6 @@ pool:
 
 steps:
 
-- bash: echo '-s $(Build.SourcesDirectory) -n newSCA5501 -r $(Agent.BuildDirectory)'    
-
 - task: Application security testing@2023
 
   displayName: 'Application security testing'
