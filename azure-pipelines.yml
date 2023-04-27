@@ -42,7 +42,7 @@ steps:
 
       enableDependencyScan: true
 
-      dependencyServerURL: scaNewConnection1
+      dependencyServerURL: sca
 
       dependencyAccessControlURL: 'https://platform.checkmarx.net'
 
