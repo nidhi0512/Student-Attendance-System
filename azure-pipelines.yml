@@ -26,7 +26,7 @@ steps:
 
 - bash: echo '-s $(Build.SourcesDirectory) -n newSCA5501 -r $(Agent.BuildDirectory)'    
 
-- task: Checkmarx-Prerelease.cxsast.cx-scan-task.Application security testing@2023
+- task: Application security testing@2023
 
   displayName: 'Application security testing'
 
