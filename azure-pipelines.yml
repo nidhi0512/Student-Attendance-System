@@ -16,9 +16,9 @@ variables:
 
 pool:
 
-#    name: Default
+    name: Default
 
-     vmImage: 'macos latest'
+   #  vmImage: 'macos latest'
 
   
 
@@ -67,3 +67,6 @@ steps:
       scaLow: ' '
 
       scaTeam: 'CxServer/'
+
+ 
+
