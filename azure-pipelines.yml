@@ -1,30 +1,69 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+parameters:
 
+- name: cxService
 
-jobs:
-- job: Job_1
-  displayName: Agent job 1
-  pool:
-    name: Default
-  variables:
-    System.Debug: true
-  steps:
-  - checkout: self
-    clean: true
-    fetchTags: false
-  - task: Application security testing@2023
-    displayName: Application security testing
-    inputs:
-      projectName: cxtest
-      enableProxy: true
-      CheckmarxService: 61c5f2c3-f703-4a9f-90c5-84da95eccf9c
-      fullTeamName: CxServer
-      incScan: false
-      fullScansScheduled: false
+  type: string
+
+  default: SAST-Bug
+
+ 
+
+variables:
+
+- name: debug
+
+  value: true 
+
+pool:
+
+#    name: Default
+
+     vmImage: 'macos latest'
+
+  
+
+steps:
+
+- bash: echo '-s $(Build.SourcesDirectory) -n newSCA5501 -r $(Agent.BuildDirectory)'    
+
+- task: Checkmarx-Prerelease.cxsast.cx-scan-task.Application security testing@2023
+
+  displayName: 'Application security testing'
+
+  inputs:
+
+      projectName: newSCA5501
+
+      syncMode: true
+
+      enableProxy: false
+
+      enableSastScan: false
+
       enableDependencyScan: true
-      dependencyServerURL: 246a819e-6c32-4bb7-bfa4-a8f1b33f4b1f
-      scaTeam: CxServer
-...
+
+      dependencyServerURL: scaNewConnection1
+
+      dependencyAccessControlURL: 'https://platform.checkmarx.net'
+
+      dependencyWebAppURL: 'https://sca.checkmarx.net'
+
+      includeSource: false
+
+      dependencyFolderExclusion: 'cvs,.svn,.hg,.git,.bzr,bin,obj,backup,.idea,node_modules'
+
+      dependencyTenant: plugins
+
+      scaVulnerabilityThreshold: false
+ 
+      isEnableScaResolver: true
+
+      scaResolverAddParameters: '-s $(Build.SourcesDirectory) -n newSCA5501 -r $(Agent.BuildDirectory)'
+
+      scaHigh: ' '
+
+      scaMedium: ' '
+
+      scaLow: ' '
+
+      scaTeam: 'CxServer/'
