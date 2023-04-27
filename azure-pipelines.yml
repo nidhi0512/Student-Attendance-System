@@ -30,7 +30,7 @@ steps:
 
   inputs:
 
-      projectName: newSCA5501
+      projectName: newSCA5501111
 
       syncMode: true
 
